@@ -1,0 +1,27 @@
+.button-body {
+  padding-bottom: 8px;
+}
+.input {
+  height: 5vw;
+  width: 100%;
+  border-color: gainsboro;
+  border-radius: 0.3rem;
+  margin-bottom: 20px;
+  border: 1px solid darkgrey;
+}
+.button {
+  margin-bottom: 6px;
+  height: 4vw;
+  border-radius: 0.3rem;
+  border: none;
+  border-style: none;
+}
+.button:hover::before {
+  background-color: rgba(158, 209, 177, 0.411);
+}
+
+.button:active {
+  background-color: rgba(158, 209, 177, 0.411);
+  box-shadow: 0 1px rgb(204, 204, 204);
+  transform: translateY(2px);
+}

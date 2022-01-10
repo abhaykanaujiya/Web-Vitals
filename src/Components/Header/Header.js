@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, BrowserRouter as Router } from "react-router-dom";
-import { HomePage } from "../../Pages/HomePage/HomePage";
+import HomePage from "../../Pages/HomePage/HomePage";
+import icon from "./Group 1.svg";
 import "./header.css";
 
 export const Header = () => {
@@ -9,19 +10,27 @@ export const Header = () => {
       <Router>
         <header className='header'>
           <div>
-            <h1>Web Vitals</h1>
+            <img className='icon' src={icon} alt='img' />
           </div>
-          <ul className='ul-body'>
-            <li>
-              <Link to='/home'>Home</Link>
-            </li>
-            <li>
-              <Link to='report'>Report</Link>
-            </li>
-            <li>
-              <Link to='about'> About</Link>
-            </li>
-          </ul>
+
+          <div className='ul-body'>
+            <div>
+              <Link className='links' to='/home'>
+                Home
+              </Link>
+            </div>
+            <div>
+              <Link className='links' to='/table'>
+                Report
+              </Link>
+            </div>
+            <div>
+              <Link className='links' to='about'>
+                {" "}
+                About
+              </Link>
+            </div>
+          </div>
         </header>
       </Router>
       <HomePage />
