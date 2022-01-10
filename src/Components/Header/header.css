@@ -1,0 +1,36 @@
+.body {
+  padding: 20px;
+}
+.header {
+  padding-bottom: 10px;
+  position: sticky;
+  top: 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  background-color: rgb(235 238 237 / 97%);
+  border-bottom: 0px solid rgb(180, 178, 178);
+  box-shadow: 0 0px 10px rgb(180, 178, 178);
+  height: 70px;
+}
+.icon {
+  display: flex;
+  height: 5vw;
+  margin-left: 18px;
+  margin-bottom: 8px;
+}
+.links {
+  text-decoration: none;
+  margin-right: 30px;
+  color: rgb(124, 121, 121);
+}
+.ul-body {
+  display: flex;
+  justify-content: space-between;
+}
+
+.button {
+  width: 100%;
+}
