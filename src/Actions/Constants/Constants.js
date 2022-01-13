@@ -1,0 +1,4 @@
+export const GET_DATA = "GET_DATA";
+export const GET_PAGE_INSIGHT = "GET_PAGE_INSIGHT";
+export const REQUEST_POST_DATA = "REQUEST_POST_DATA";
+export const GET_REQUEST_ERR = "GET_REQUEST_ERR";
