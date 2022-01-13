@@ -1,0 +1,17 @@
+.table-success {
+  box-shadow: 0px 0px 5px 5px lightgrey;
+}
+.table {
+  --bs-table-bg: #76b6c3;
+  --bs-table-striped-bg: #bfdde3;
+  --bs-table-striped-color: #000;
+  --bs-table-active-bg: #bcd0c7;
+  --bs-table-active-color: #000;
+  --bs-table-hover-bg: #c1d6cc;
+  --bs-table-hover-color: #000;
+  color: #000;
+  border-color: #bcd0c7;
+}
+.--bs-table-bg {
+  background-color: #76b6c3;
+}

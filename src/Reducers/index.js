@@ -1,4 +1,4 @@
 import { combineReducers } from "redux";
-import hpr from "./HomePageReducer";
+import HomePageReducer from "./HomePageReducer";
 
-export default combineReducers({ hpr });
+export default combineReducers({ HomePageReducer });

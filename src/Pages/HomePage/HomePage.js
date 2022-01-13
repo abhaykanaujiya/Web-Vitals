@@ -1,42 +1,46 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { endPoints } from "../../EndPoints/EndPoints";
-import { UsersTable } from "../UsersData/UsersTable";
-import { handleSubmit } from "../../Actions/HomePageAction";
+import UsersTable from "../UsersDataTable/UsersTable";
+import { getData } from "../../Actions/HomePageAction";
 import "./homePage.css";
+import axios from "axios";
+import { useSelector } from "react-redux";
 
 const HomePage = (props) => {
-  const [insight, setInsight] = useState([]);
-  const [insightService, setService] = useState([]);
+  const [postReqData, setPostReqData] = useState([]);
   const [input, setinput] = useState("");
-  // const [filter, setFilter] = useState([]);
-  const getData = () => {
-    Promise.all(endPoints)
-      .then(([res1, res2]) => {
-        console.log(res2, "res1");
-        setInsight(res1.data);
-        setService(res2.data);
-      })
-      .catch((err) => console.log(err, "something went wrong"));
+
+  const pageUrl = {
+    page_url: input,
+    service_id: 1,
+    created_by: "devesh.agnihotri@meesho.com",
+    updated_by: "devesh.agnihotri@meesho.com",
+    strategy: "desktop",
   };
 
+  console.log(props, "homepageprops");
   useEffect(() => {
-    getData();
+    props.getData();
   }, []);
 
-  console.log(insightService.data, "service");
   const handleInput = (e) => {
     setinput(e.target.value.toLowerCase());
   };
-  // const handleFilter = () => {
-  //   let filterData = userInfo.filter((v) => v.name.toLowerCase() === input);
-  //   setUserInfo(filterData);
-  //   console.log(userInfo, "filter");
-  // };
+
   const handleClick = () => {
-    // handleFilter();
-    // props.handleSubmit(userInfo, input);
-    // setinput("");
+    const postData = () => {
+      axios
+        .post(
+          "https://web-vitals.meeshotest.in/analytics/1.0/pagespeed/test/",
+          pageUrl
+        )
+        .then((res) => {
+          setPostReqData(res);
+        });
+    };
+    console.log(postReqData, "post data");
+    postData();
+    setinput("");
   };
 
   return (
@@ -55,16 +59,16 @@ const HomePage = (props) => {
           Generate Report
         </button>
       </div>
-      <div>
-        <UsersTable insight={insight} serviceInfo={insightService.data} />
-      </div>
+      <UsersTable pageInsighData={props.pageInsight} />
     </div>
   );
 };
-function mapStatetoprops(HomePageReducer) {
-  const { reports } = HomePageReducer;
+function mapStatetoprops({ HomePageReducer }) {
+  const { pageInsight, serviceData, error } = HomePageReducer;
   return {
-    reports,
+    pageInsight,
+    serviceData,
+    error,
   };
 }
-export default connect(mapStatetoprops, { handleSubmit })(HomePage);
+export default connect(mapStatetoprops, { getData })(HomePage);
