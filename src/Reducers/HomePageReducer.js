@@ -6,9 +6,9 @@ import {
 } from "../Actions/Constants/Constants";
 
 const INITIAL_STATE = {
-  serviceData: [],
-  pageInsight: [],
-  error: "",
+  pageInsight: {},
+  postReqData: {},
+  // error: "",
 };
 const HomePageReducer = (state = INITIAL_STATE, action) => {
   console.log(action, "action.payloadd");
@@ -18,16 +18,20 @@ const HomePageReducer = (state = INITIAL_STATE, action) => {
         ...state,
         pageInsight: action.payload,
       };
-    case GET_DATA:
+    // case GET_DATA:
+    //   return {
+    //     ...state,
+    //     serviceData: action.payload,
+    //   };
+    case REQUEST_POST_DATA:
       return {
         ...state,
-        serviceData: action.payload,
+        postReqData: action.payload,
       };
-
-    case GET_REQUEST_ERR:
-      return {
-        error: action.payload,
-      };
+    // case GET_REQUEST_ERR:
+    //   return {
+    //     error: action.payload,
+    //   };
 
     default:
       return state;

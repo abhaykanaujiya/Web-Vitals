@@ -1,47 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import UsersTable from "../UsersDataTable/UsersTable";
-import { getData } from "../../Actions/HomePageAction";
+import { getData, postData } from "../../Actions/HomePageAction";
+import { Loading } from "../Loader/Loading";
 import "./homePage.css";
-import axios from "axios";
-import { useSelector } from "react-redux";
 
 const HomePage = (props) => {
-  const [postReqData, setPostReqData] = useState([]);
   const [input, setinput] = useState("");
-
-  const pageUrl = {
-    page_url: input,
-    service_id: 1,
-    created_by: "devesh.agnihotri@meesho.com",
-    updated_by: "devesh.agnihotri@meesho.com",
-    strategy: "desktop",
-  };
-
-  console.log(props, "homepageprops");
-  useEffect(() => {
-    props.getData();
-  }, []);
+  const [loading, setLoading] = useState(false);
+  //const [dat, setDat] = useState(props.postReqData);
+  console.log(props.postReqData, "lp");
 
   const handleInput = (e) => {
     setinput(e.target.value.toLowerCase());
   };
 
   const handleClick = () => {
-    const postData = () => {
-      axios
-        .post(
-          "https://web-vitals.meeshotest.in/analytics/1.0/pagespeed/test/",
-          pageUrl
-        )
-        .then((res) => {
-          setPostReqData(res);
-        });
+    // console.log(fun, "hanfdlela");
+    const pageUrl = {
+      page_url: input,
+      service_id: 2,
+      created_by: "devesh.agnihotri@meesho.com",
+      updated_by: "devesh.agnihotri@meesho.com",
+      strategy: "desktop",
     };
-    console.log(postReqData, "post data");
-    postData();
+    setLoading(true);
+    console.log("click");
+    props.postData(pageUrl);
+
     setinput("");
   };
+  useEffect(() => {
+    setLoading(false);
+    props.getData();
+  }, [props.postReqData]);
 
   return (
     <div className='body'>
@@ -59,16 +51,20 @@ const HomePage = (props) => {
           Generate Report
         </button>
       </div>
-      <UsersTable pageInsighData={props.pageInsight} />
+      {loading === false ? (
+        <UsersTable pageInsighData={props.pageInsight} />
+      ) : (
+        <Loading />
+      )}
     </div>
   );
 };
 function mapStatetoprops({ HomePageReducer }) {
-  const { pageInsight, serviceData, error } = HomePageReducer;
+  const { pageInsight, postReqData, error } = HomePageReducer;
   return {
     pageInsight,
-    serviceData,
+    postReqData,
     error,
   };
 }
-export default connect(mapStatetoprops, { getData })(HomePage);
+export default connect(mapStatetoprops, { getData, postData })(HomePage);
