@@ -21,7 +21,7 @@ const UsersTable = (props) => {
           </tr>
         </thead>
 
-        {insight?.map((v, index) => (
+        {insight?.data?.pageSpeedInsight?.map((v, index) => (
           <tbody>
             <tr>
               <td>{index}</td>
