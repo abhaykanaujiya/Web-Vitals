@@ -15,7 +15,7 @@ export const getData = () => {
         },
         params: {
           strategy: "desktop",
-          service_id: 2,
+          service_id: 3,
         },
       })
       .then((res) => {

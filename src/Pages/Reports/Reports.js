@@ -1,24 +1,105 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { useParams } from "react-router-dom";
+// import { handleView } from "../../Actions/ReportsAction";
+import "./report.css";
 
-export const Reports = () => {
+export const Reports = (props) => {
+  // const [pageSpeed, setPageSpeed] = useEffect({});
+  const pS = props.pageInsight;
+  console.log(pS, "pS");
+  let { userId } = useParams();
+  // if (props.pageInsight[i] === userId) {
+  //   console.log("");
+  // }
+  console.log(userId, "user id");
+  // useEffect(() => {
+  //   axios
+  //     .get("http://web-vitals.meeshotest.in/analytics/1.0/pagespeed/get")
+  //     .then((res) => {
+  //       console.log(res.data, "report user id");
+  //       setPageSpeed(res.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err, "somthing went wrong");
+  //     });
+  // }, []);
+
   return (
-    <div>
-      <div className='card' style={{ width: "18rem" }}>
-        <div className='card-body'>
-          <h5 className='card-title'>Card title</h5>
-          <h6 className='card-subtitle mb-2 text-muted'>Card subtitle</h6>
-          <p className='card-text'>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-          <a href='#' className='card-link'>
-            Card link
-          </a>
-          <a href='#' className='card-link'>
-            Another link
-          </a>
-        </div>
+    <div
+      className='report-cards'
+      style={{
+        display: "flex",
+        flexFlow: "wrap",
+        justifyContent: "space-between",
+        marginTop: "10px",
+        padding: "10px",
+      }}
+    >
+      <div className='reports-container'>
+        <h4>
+          <b>pageSpeedInsight</b>
+        </h4>
+        <p>page_url</p>
+        <p>strategy</p>
+        <p>_id</p>
+        <p>updated_at</p>
+      </div>
+      <div className='reports-container'>
+        <h4>
+          <b>pageSpeedInsight</b>
+        </h4>
+        <p>page_url</p>
+        <p>strategy</p>
+        <p>_id</p>
+        <p>updated_at</p>
+      </div>
+      <div className='reports-container'>
+        <h4>
+          <b>pageSpeedInsight</b>
+        </h4>
+        <p>page_url</p>
+        <p>strategy</p>
+        <p>_id</p>
+        <p>updated_at</p>
+      </div>
+      <div className='reports-container'>
+        <h4>
+          <b>pageSpeedInsight</b>
+        </h4>
+        <p>page_url</p>
+        <p>strategy</p>
+        <p>_id</p>
+        <p>updated_at</p>
+      </div>
+      <div className='reports-container'>
+        <h4>
+          <b>pageSpeedInsight</b>
+        </h4>
+        <p>page_url</p>
+        <p>strategy</p>
+        <p>_id</p>
+        <p>updated_at</p>
+      </div>
+      <div className='reports-container'>
+        <h4>
+          <b>pageSpeedInsight</b>
+        </h4>
+        <p>page_url</p>
+        <p>strategy</p>
+        <p>_id</p>
+        <p>updated_at</p>
       </div>
     </div>
   );
 };
+function mapStatetoprops({ HomePageReducer }) {
+  const { pageInsight, postReqData } = HomePageReducer;
+  return {
+    pageInsight,
+    postReqData,
+  };
+}
+
+export default connect(mapStatetoprops, {})(Reports);

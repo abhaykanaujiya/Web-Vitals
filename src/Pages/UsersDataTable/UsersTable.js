@@ -1,52 +1,49 @@
-import React from "react";
-//import { connect } from "react-redux";
-import "bootstrap/dist/css/bootstrap.css";
+import React, { useState } from "react";
+
+import "./userTable.css";
+// import { handleView } from "../../Actions/ReportsAction";
+import { Link } from "react-router-dom";
 
 const UsersTable = (props) => {
-  const insight = props.pageInsighData;
-  console.log(insight, "insight");
-  return (
-    <div>
-      <table className='table table-success table-striped'>
-        <thead>
-          <tr>
-            <th scope='col'>Count</th>
-            <th scope='col'>Id</th>
-            <th scope='col'>Service</th>
-            <th scope='col'>Service Id</th>
-            <th scope='col'>Version</th>
-            <th scope='col'>PageUrl</th>
-            <th scope='col'>Strategy</th>
-            <th scope='col'>Created_At</th>
-          </tr>
-        </thead>
+  const postReqData = props.postReqData;
 
-        {insight?.data?.pageSpeedInsight?.map((v, index) => (
-          <tbody>
-            <tr>
-              <td>{index}</td>
-              <td>{v._id}</td>
+  const insight = props.pageInsighData.data;
+
+  // const handleClick = (select, i) => {
+  //   console.log(select[i], "select");
+  //   handleView(select, i);
+  // };
+  return (
+    <div className='container'>
+      <table className='table-body'>
+        <tbody>
+          <tr>
+            <th>Count</th>
+            <th>Service</th>
+            <th>Service Id</th>
+            <th>PageUrl</th>
+            <th>Strategy</th>
+            <th>Created_At</th>
+            <th>Action</th>
+          </tr>
+
+          {insight?.pageSpeedInsight.map((v, index) => (
+            <tr key={index}>
+              <td>{index + 1}</td>
               <td>{v.service_id}</td>
               <td>{v.service_id}</td>
-              <td>{v.__v}</td>
               <td>{v.page_url}</td>
               <td>{v.strategy}</td>
               <td>{v.created_at}</td>
+              <td>
+                <Link to={`/pageInsight/${index + 1}`}>View</Link>
+              </td>
             </tr>
-          </tbody>
-        ))}
+          ))}
+        </tbody>
       </table>
     </div>
   );
 };
-export default UsersTable;
-// function mapStatetoprops({ HomePageReducer }) {
-//   const { pageInsight, serviceData, error } = HomePageReducer;
-//   return {
-//     pageInsight,
-//     serviceData,
-//     error,
-//   };
-// }
 
-// export default connect(mapStatetoprops, {})(UsersTable);
+export default UsersTable;

@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import HomePage from "../../Pages/HomePage/HomePage";
-import UsersTable from "../../Pages/UsersDataTable/UsersTable";
 import icon from "./Group 1.svg";
 import "./header.css";
 
@@ -18,7 +16,7 @@ function Header(props) {
             Home
           </Link>
 
-          <Link className='links' to='/table'>
+          <Link className='links' to='/report'>
             Report
           </Link>
 
@@ -27,7 +25,6 @@ function Header(props) {
           </Link>
         </div>
       </header>
-     
     </div>
   );
 }
