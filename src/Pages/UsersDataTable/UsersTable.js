@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 
 import "./userTable.css";
-// import { handleView } from "../../Actions/ReportsAction";
+
 import { Link } from "react-router-dom";
 
 const UsersTable = (props) => {
   const postReqData = props.postReqData;
 
   const insight = props.pageInsighData.data;
-
-  // const handleClick = (select, i) => {
-  //   console.log(select[i], "select");
-  //   handleView(select, i);
-  // };
+  console.log(typeof insight, "typee of insight");
   return (
     <div className='container'>
       <table className='table-body'>
@@ -36,7 +32,14 @@ const UsersTable = (props) => {
               <td>{v.strategy}</td>
               <td>{v.created_at}</td>
               <td>
-                <Link to={`/pageInsight/${index + 1}`}>View</Link>
+                <div className='but-link' style={{ border: "1px solid " }}>
+                  <Link
+                    style={{ textDecoration: "none", color: "white" }}
+                    to={`/pageInsight/${v._id}`}
+                  >
+                    View
+                  </Link>
+                </div>
               </td>
             </tr>
           ))}

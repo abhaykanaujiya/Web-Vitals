@@ -4,14 +4,27 @@
 }
 .table-body {
   background-color: cadetblue;
+  width: 100%;
 }
 td,
 th {
   border: 1px solid #dddddd;
-  text-align: left;
+  box-shadow: 1px 0px 5px 2px;
+  text-align: center;
   padding: 5px;
   background: darkslategrey;
+  height: 60px;
+  font-weight: 500;
 }
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+.but-link {
+  border: 1px solid;
+  box-shadow: 1px 0.5px 5px 2px;
+  border-radius: 1rem;
+}
+Link {
+  text-decoration: none;
 }

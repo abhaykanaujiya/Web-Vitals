@@ -4,7 +4,7 @@ import UsersTable from "./Pages/UsersDataTable/UsersTable";
 import About from "./Pages/About/About";
 import Header from "./Components/Header/Header";
 import "./App.css";
-import { Reports } from "./Pages/Reports/Reports";
+import Reports from "./Pages/Reports/Reports";
 function App() {
   return (
     <BrowserRouter>

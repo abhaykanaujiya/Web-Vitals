@@ -10,6 +10,7 @@ const INITIAL_STATE = {
   postReqData: {},
 };
 const HomePageReducer = (state = INITIAL_STATE, action) => {
+  console.log(action,"actions");
   switch (action.type) {
     case GET_PAGE_INSIGHT:
       return {

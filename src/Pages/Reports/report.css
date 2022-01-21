@@ -1,12 +1,16 @@
 .reports-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-flow: column;
   border: 2px solid;
-  width: 300px;
-  height: 300px;
-  margin-bottom: 20px;
+  width: 350px;
+  height: 360px;
+  margin-bottom: 10px;
+  overflow: scroll;
 }
 h4 {
   display: flex;
   justify-content: center;
 }
+
