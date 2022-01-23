@@ -7,9 +7,9 @@ import {
   GET_REQUEST_ERR,
 } from "./Constants/Constants";
 
-export const getData = (desktopCheckBox) => {
+export const getData = (mobileCheckBox) => {
   return (dispatch) => {
-    if (desktopCheckBox === false) {
+    if (mobileCheckBox === false) {
       axios
         .get(page_insight_url, {
           headers: {
@@ -56,7 +56,7 @@ export const getData = (desktopCheckBox) => {
     }
   };
 };
-export const postData = (data, desktopCheckBox, input) => {
+export const postData = (data, mobileCheckBox, input) => {
   console.log("hello post req");
   const pUrl = {
     page_url: input,
@@ -66,9 +66,9 @@ export const postData = (data, desktopCheckBox, input) => {
     strategy: "mobile",
   };
   return (dispatch) => {
-    if (desktopCheckBox === true) {
+    if (mobileCheckBox === true) {
       axios
-        .post(post_url, data, {
+        .post(post_url, pUrl, {
           headers: {
             "access-token": 12345,
           },
@@ -83,7 +83,7 @@ export const postData = (data, desktopCheckBox, input) => {
         });
     } else {
       axios
-        .post(post_url, pUrl, {
+        .post(post_url, data, {
           headers: {
             "access-token": 12345,
           },

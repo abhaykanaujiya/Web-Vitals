@@ -9,7 +9,7 @@ const HomePage = (props) => {
   const [input, setinput] = useState("");
   const [loading, setLoading] = useState(false);
   const [desktopCheckBox, setDesktopCheckBox] = useState(false);
-  // const [mobileCheckBox, setMobileCkeckBox] = useState(false);
+  const [mobileCheckBox, setMobileCheckBox] = useState(false);
   const handleInput = (e) => {
     setinput(e.target.value.toLowerCase());
   };
@@ -23,22 +23,22 @@ const HomePage = (props) => {
       strategy: "desktop",
     };
     setLoading(true);
-    props.postData(pageUrl, desktopCheckBox, input);
+    props.postData(pageUrl, mobileCheckBox, input);
     setinput("");
   };
-  const handleDesktopCheckbox = () => {
-    setDesktopCheckBox(true);
-    console.log(desktopCheckBox, "desktopCheckBox  ");
+  const handleMobileCheckbox = () => {
+    setMobileCheckBox(true);
+    console.log(mobileCheckBox, "desktopCheckBox  ");
   };
-  const handleDesktopCheckboxChange = () => {
-    setDesktopCheckBox(false);
-    console.log(desktopCheckBox, "desktopCheckBox change");
+  const handleMobileCheckboxChange = () => {
+    setMobileCheckBox(false);
+    console.log(mobileCheckBox, "desktopCheckBox change");
   };
 
   useEffect(() => {
     setLoading(false);
-    props.getData(desktopCheckBox);
-  }, [props.postReqData, desktopCheckBox]);
+    props.getData(mobileCheckBox);
+  }, [props.postReqData, mobileCheckBox]);
 
   return (
     <div className='body'>
@@ -49,21 +49,21 @@ const HomePage = (props) => {
             type='checkbox'
             value='default'
             onChange={
-              desktopCheckBox === false
-                ? () => handleDesktopCheckbox()
-                : () => handleDesktopCheckboxChange()
+              mobileCheckBox === false
+                ? () => handleMobileCheckbox()
+                : () => handleMobileCheckboxChange()
             }
           ></input>
-          <label>Desktop</label>
+          <label>Mobile</label>
         </div>
         {/* ) : (
            () => handleChangeDesktopCheckbox(setDesktopCheckBox(false))
        )} */}
 
-        <div>
+        {/* <div>
           <input type='checkbox' value='default'></input>
           <label>Mobile</label>
-        </div>
+        </div> */}
       </div>
 
       <div className='inner-body'>
