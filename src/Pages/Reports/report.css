@@ -14,3 +14,8 @@ h4 {
   justify-content: center;
 }
 
+.inner-report {
+  display: flex;
+  flex-flow: column;
+  flex: auto;
+}

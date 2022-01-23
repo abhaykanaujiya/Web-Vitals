@@ -8,8 +8,8 @@ import "./homePage.css";
 const HomePage = (props) => {
   const [input, setinput] = useState("");
   const [loading, setLoading] = useState(false);
-  console.log(props.postReqData, "lp");
-
+  const [desktopCheckBox, setDesktopCheckBox] = useState(false);
+  // const [mobileCheckBox, setMobileCkeckBox] = useState(false);
   const handleInput = (e) => {
     setinput(e.target.value.toLowerCase());
   };
@@ -23,17 +23,49 @@ const HomePage = (props) => {
       strategy: "desktop",
     };
     setLoading(true);
-    console.log("click");
-    props.postData(pageUrl);
+    props.postData(pageUrl, desktopCheckBox, input);
     setinput("");
   };
+  const handleDesktopCheckbox = () => {
+    setDesktopCheckBox(true);
+    console.log(desktopCheckBox, "desktopCheckBox  ");
+  };
+  const handleDesktopCheckboxChange = () => {
+    setDesktopCheckBox(false);
+    console.log(desktopCheckBox, "desktopCheckBox change");
+  };
+
   useEffect(() => {
     setLoading(false);
-    props.getData();
-  }, [props.postReqData]);
+    props.getData(desktopCheckBox);
+  }, [props.postReqData, desktopCheckBox]);
 
   return (
     <div className='body'>
+      <div className='strategy'>
+        {/* {desktopCheckBox === false ? ( */}
+        <div>
+          <input
+            type='checkbox'
+            value='default'
+            onChange={
+              desktopCheckBox === false
+                ? () => handleDesktopCheckbox()
+                : () => handleDesktopCheckboxChange()
+            }
+          ></input>
+          <label>Desktop</label>
+        </div>
+        {/* ) : (
+           () => handleChangeDesktopCheckbox(setDesktopCheckBox(false))
+       )} */}
+
+        <div>
+          <input type='checkbox' value='default'></input>
+          <label>Mobile</label>
+        </div>
+      </div>
+
       <div className='inner-body'>
         <input
           className='input'

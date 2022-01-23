@@ -41,23 +41,25 @@ const Reports = (props) => {
         }}
       >
         <div className='reports-container'>
-          <h4>PageSpeedInsight</h4>
-          <div>
-            <h5>Strategy</h5>
-            <div>{pS.strategy}</div>
-          </div>
-          <div>
-            <h5>Created_At</h5>
-            <div>{pS.created_at}</div>
-          </div>
-          <div>
-            <h5>Id</h5>
-            <div>{pS._id}</div>
+          <div className='inner-report'>
+            <h4>PageSpeedInsight</h4>
+            <div>
+              <h5>Strategy</h5>
+              <div>{pS.strategy}</div>
+            </div>
+            <div>
+              <h5>Created_At</h5>
+              <div>{pS.created_at}</div>
+            </div>
+            <div>
+              <h5>Id</h5>
+              <div>{pS._id}</div>
+            </div>
           </div>
         </div>
 
         <div className='reports-container'>
-          <div>
+          <div className='inner-report'>
             <h4>Page_speed_metrics</h4>
             <div>
               <h5>analysisUTCTimestamp</h5>
@@ -67,7 +69,7 @@ const Reports = (props) => {
         </div>
 
         <div className='reports-container'>
-          <div>
+          <div className='inner-report'>
             <h4>lighthouseResult</h4>
             <div>
               <h5>fetchTime</h5>
@@ -81,7 +83,7 @@ const Reports = (props) => {
         </div>
 
         <div className='reports-container'>
-          <div>
+          <div className='inner-report'>
             <h4>{pM?.lighthouseResult?.categories?.performance?.title}</h4>
             <div>
               <h5>score</h5>
@@ -91,7 +93,7 @@ const Reports = (props) => {
         </div>
 
         <div className='reports-container'>
-          <div>
+          <div className='inner-report'>
             <h4>CUMULATIVE_LAYOUT_SHIFT_SCORE</h4>
             <div>
               <h5>Category</h5>
@@ -115,7 +117,7 @@ const Reports = (props) => {
         </div>
 
         <div className='reports-container'>
-          <div>
+          <div className='inner-report'>
             <h4>FIRST_CONTENTFUL_PAINT_MS</h4>
             <div>
               <h5>Category</h5>
@@ -139,7 +141,7 @@ const Reports = (props) => {
         </div>
 
         <div className='reports-container'>
-          <div>
+          <div className='inner-report'>
             <h4>FIRST_INPUT_DELAY_MS</h4>
             <div>
               <h5>Category</h5>
@@ -157,7 +159,7 @@ const Reports = (props) => {
         </div>
 
         <div className='reports-container'>
-          <div>
+          <div className='inner-report'>
             <h4>LARGEST_CONTENTFUL_PAINT_MS</h4>
             <div>
               <h5>Category</h5>
