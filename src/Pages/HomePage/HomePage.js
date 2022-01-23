@@ -8,7 +8,6 @@ import "./homePage.css";
 const HomePage = (props) => {
   const [input, setinput] = useState("");
   const [loading, setLoading] = useState(false);
-  //const [dat, setDat] = useState(props.postReqData);
   console.log(props.postReqData, "lp");
 
   const handleInput = (e) => {
@@ -16,10 +15,9 @@ const HomePage = (props) => {
   };
 
   const handleClick = () => {
-    // console.log(fun, "hanfdlela");
     const pageUrl = {
       page_url: input,
-      service_id: 2,
+      service_id: 3,
       created_by: "devesh.agnihotri@meesho.com",
       updated_by: "devesh.agnihotri@meesho.com",
       strategy: "desktop",
@@ -27,7 +25,6 @@ const HomePage = (props) => {
     setLoading(true);
     console.log("click");
     props.postData(pageUrl);
-
     setinput("");
   };
   useEffect(() => {
@@ -52,7 +49,10 @@ const HomePage = (props) => {
         </button>
       </div>
       {loading === false ? (
-        <UsersTable pageInsighData={props.pageInsight} />
+        <UsersTable
+          pageInsighData={props.pageInsight}
+          postReqData={props.postReqData}
+        />
       ) : (
         <Loading />
       )}

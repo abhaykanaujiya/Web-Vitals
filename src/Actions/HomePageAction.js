@@ -1,5 +1,5 @@
 import axios from "axios";
-import { page_insight_url } from "../EndPoints/EndPoints";
+import { page_insight_url, post_url } from "../EndPoints/EndPoints";
 import {
   GET_PAGE_INSIGHT,
   REQUEST_POST_DATA,
@@ -15,7 +15,7 @@ export const getData = () => {
         },
         params: {
           strategy: "desktop",
-          service_id: 2,
+          service_id: 3,
         },
       })
       .then((res) => {
@@ -35,15 +35,11 @@ export const postData = (data) => {
   console.log("hello post req");
   return (dispatch) => {
     axios
-      .post(
-        "https://web-vitals.meeshotest.in/analytics/1.0/pagespeed/test/",
-        data,
-        {
-          headers: {
-            "access-token": 12345,
-          },
-        }
-      )
+      .post(post_url, data, {
+        headers: {
+          "access-token": 12345,
+        },
+      })
       .then((res) => {
         if (res.status === 200) {
           console.log(res, "post response");

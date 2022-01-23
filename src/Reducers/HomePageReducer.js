@@ -8,10 +8,9 @@ import {
 const INITIAL_STATE = {
   pageInsight: {},
   postReqData: {},
-  // error: "",
 };
 const HomePageReducer = (state = INITIAL_STATE, action) => {
-  console.log(action, "action.payloadd");
+  console.log(action,"actions");
   switch (action.type) {
     case GET_PAGE_INSIGHT:
       return {
