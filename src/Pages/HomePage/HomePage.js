@@ -8,8 +8,8 @@ import "./homePage.css";
 const HomePage = (props) => {
   const [input, setinput] = useState("");
   const [loading, setLoading] = useState(false);
-  const [desktopCheckBox, setDesktopCheckBox] = useState(false);
-  const [mobileCheckBox, setMobileCheckBox] = useState(false);
+  const [mobileCheckBox, setMobileCheckBox] = useState(true);
+
   const handleInput = (e) => {
     setinput(e.target.value.toLowerCase());
   };
@@ -26,6 +26,7 @@ const HomePage = (props) => {
     props.postData(pageUrl, mobileCheckBox, input);
     setinput("");
   };
+
   const handleMobileCheckbox = () => {
     setMobileCheckBox(true);
     console.log(mobileCheckBox, "desktopCheckBox  ");
@@ -43,7 +44,6 @@ const HomePage = (props) => {
   return (
     <div className='body'>
       <div className='strategy'>
-        {/* {desktopCheckBox === false ? ( */}
         <div>
           <input
             type='checkbox'
@@ -56,9 +56,6 @@ const HomePage = (props) => {
           ></input>
           <label>Mobile</label>
         </div>
-        {/* ) : (
-           () => handleChangeDesktopCheckbox(setDesktopCheckBox(false))
-       )} */}
 
         {/* <div>
           <input type='checkbox' value='default'></input>
